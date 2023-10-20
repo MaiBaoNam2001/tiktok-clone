@@ -19,6 +19,12 @@
     justify-content: space-between;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .search,
 .search-result {
     width: 361px;
@@ -108,4 +114,22 @@
         color: rgba(22, 24, 35, 1);
         background-color: rgba(22, 24, 35, 0.06);
     }
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+}
+
+.more-btn {
+    margin-left: 24px;
+    position: relative;
+    cursor: pointer;
+    padding: 0 4px;
+}
+
+.ellipsis-vertical {
+    width: 20px;
+    height: 20px;
+    display: block;
 }
