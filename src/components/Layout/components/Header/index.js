@@ -31,6 +31,21 @@ const MENU_ITEMS = [
             </svg>
         ),
         title: 'Tiếng Việt',
+        children: {
+            title: 'Ngôn ngữ',
+            data: [
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt (Việt Nam)',
+                },
+            ],
+        },
     },
     {
         icon: (
@@ -83,6 +98,17 @@ function Header() {
             setSearchResult([1, 2, 3]);
         }, 0);
     }, []);
+
+    // Handle logic
+    const handleMenuChange = (menuItem) => {
+        console.log(menuItem);
+        switch (menuItem.type) {
+            case 'language':
+                // Handle change language
+                break;
+            default:
+        }
+    };
 
     return (
         <header className={cx('wrapper')}>
@@ -167,7 +193,7 @@ function Header() {
                     <Button text>Tải lên</Button>
                     <Button primary>Đăng nhập</Button>
 
-                    <Menu items={MENU_ITEMS}>
+                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
                         <i className={cx('more-btn')}>
                             <svg
                                 className={cx('ellipsis-vertical')}
