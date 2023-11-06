@@ -1,8 +1,9 @@
 // Menu wrapper
 .menu-list {
-    width: 240px;
+    width: 275px;
 
-    .menu-item {
+    .menu-item,
+    .menu-item-without-icon {
         margin-left: 0;
     }
 }
@@ -19,6 +20,7 @@
     display: flex;
     align-items: center;
     position: relative;
+    color: var(--text-color);
     cursor: pointer;
 }
 
@@ -49,7 +51,25 @@
     border-radius: 0;
     padding: 10px 16px;
 
+    &.separate {
+        border-top: 1px solid rgba(22, 24, 35, 0.12);
+    }
+
     &:hover {
         background: rgba(22, 24, 35, 0.03);
+    }
+}
+
+.menu-item-without-icon {
+    width: 100%;
+    font-size: 1.4rem;
+    line-height: 18px;
+    font-weight: 400;
+    justify-content: flex-start;
+    border-radius: 0;
+    padding: 10px 28px;
+
+    &:hover {
+        background: rgba(22, 24, 35, 0.06);
     }
 }
