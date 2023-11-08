@@ -105,8 +105,8 @@
     width: var(--search-button-width);
     height: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     border-top-right-radius: var(--search-border-radius);
     border-bottom-right-radius: var(--search-border-radius);
     color: rgba(22, 24, 35, 0.34);
@@ -148,8 +148,6 @@ body {
 }
 
 .ellipsis-vertical {
-    width: 20px;
-    height: 20px;
     display: block;
 }
 
@@ -159,7 +157,25 @@ body {
     padding: 3px 3px 0px;
     display: flex;
     align-items: center;
+    position: relative;
     cursor: pointer;
+}
+
+.badge {
+    height: 20px;
+    min-width: 20px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 18px;
+    left: 16px;
+    color: var(--white);
+    background: var(--primary);
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    position: absolute;
+    top: -20%;
+    padding: 0px 6px;
 }
 
 .user-avatar {
