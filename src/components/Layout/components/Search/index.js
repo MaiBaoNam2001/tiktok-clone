@@ -6,6 +6,7 @@ import styles from './Search.module.scss';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import { ClearIcon, LoadingIcon, SearchIcon } from '~/components/Icons';
+import { useDebounce } from '~/hooks';
 
 const cx = classNames.bind(styles);
 
@@ -15,17 +16,19 @@ function Search() {
     const [showSearchResult, setShowSearchResult] = useState(true);
     const [loading, setLoading] = useState(false);
 
+    const debounced = useDebounce(searchValue, 500);
+
     const inputRef = useRef();
 
     useEffect(() => {
-        if (!searchValue.trim()) {
+        if (!debounced.trim()) {
             setSearchResult([]);
             return;
         }
 
         setLoading(true);
 
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
             .then((response) => response.json())
             .then((response) => {
                 setSearchResult(response.data);
@@ -37,7 +40,7 @@ function Search() {
             .finally(() => {
                 setLoading(false);
             });
-    }, [searchValue]);
+    }, [debounced]);
 
     const handleClear = () => {
         setSearchValue('');
@@ -47,6 +50,15 @@ function Search() {
 
     const handleHideResult = () => {
         setShowSearchResult(false);
+    };
+
+    const handleKeyDown = (e) => {
+        if (!searchValue) {
+            if (e.keyCode === 32) {
+                e.preventDefault();
+                return false;
+            }
+        }
     };
 
     return (
@@ -73,6 +85,7 @@ function Search() {
                     spellCheck={false}
                     onChange={(e) => setSearchValue(e.target.value)}
                     onFocus={() => setShowSearchResult(true)}
+                    onKeyDown={(e) => handleKeyDown(e)}
                 />
 
                 {!!searchValue && !loading && (
