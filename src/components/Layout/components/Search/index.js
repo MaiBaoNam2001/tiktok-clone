@@ -49,12 +49,10 @@ function Search() {
         setShowSearchResult(false);
     };
 
-    const handleKeyDown = (e) => {
-        if (!searchValue) {
-            if (e.keyCode === 32) {
-                e.preventDefault();
-                return false;
-            }
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+        if (!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue);
         }
     };
 
@@ -80,9 +78,8 @@ function Search() {
                     value={searchValue}
                     placeholder="Tìm kiếm"
                     spellCheck={false}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleChange}
                     onFocus={() => setShowSearchResult(true)}
-                    onKeyDown={(e) => handleKeyDown(e)}
                 />
 
                 {!!searchValue && !loading && (
