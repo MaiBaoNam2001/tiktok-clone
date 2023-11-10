@@ -23,7 +23,7 @@ import {
 import Image from '~/components/Image';
 import Search from '../Search';
 import { Link } from 'react-router-dom';
-import routesConfig from '~/config/routesConfig';
+import config from '~/config';
 
 const cx = classNames.bind(styles);
 
@@ -106,7 +106,7 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <Link to={routesConfig.home} className={cx('logo-link')}>
+                    <Link to={config.routes.home} className={cx('logo-link')}>
                         <img src={images.logo} alt="Tiktok" />
                     </Link>
                 </div>
@@ -141,7 +141,7 @@ function Header() {
                         {currentUser ? (
                             <Image
                                 className={cx('user-avatar')}
-                                src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/7298257508215291910~c5_100x100.jpeg?x-expires=1699430400&x-signature=CB1BzOeyBMnxtU9AanD8i6GvDjY%3D"
+                                src="https://lh3.googleusercontent.com/a/ACg8ocIGoxFYQAGfLdYnJyLRo17UnxYefoIG3NqvzQ1W5dYuscE=s83-c-mo"
                                 alt="nammai558"
                             />
                         ) : (
