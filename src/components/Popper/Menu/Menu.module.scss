@@ -13,6 +13,14 @@
     margin-top: 4px;
 }
 
+.sub-menu-popper {
+    margin-top: 4px;
+}
+
+.menu-body {
+    overflow-y: auto;
+}
+
 //Menu header
 .header {
     height: 50px;
@@ -20,6 +28,7 @@
     display: flex;
     align-items: center;
     position: relative;
+    flex-shrink: 0;
     color: var(--text-color);
     cursor: pointer;
 }

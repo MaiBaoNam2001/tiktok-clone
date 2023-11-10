@@ -44,7 +44,7 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
             placement="bottom-end"
             render={(attrs) => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
-                    <PopperWrapper className={cx('menu-popper')}>
+                    <PopperWrapper className={cx(history.length > 1 ? 'sub-menu-popper' : 'menu-popper')}>
                         {history.length > 1 && (
                             <Header
                                 title={current.title}
@@ -53,7 +53,7 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
                                 }}
                             />
                         )}
-                        {renderItems()}
+                        <div className={cx('menu-body')}>{renderItems()}</div>
                     </PopperWrapper>
                 </div>
             )}
